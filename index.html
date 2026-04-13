@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#2563eb" />
-  <title>和英練習プレイヤー</title>
+  <title>和英練習プレイヤー 安定音声版</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="app">
     <header class="topbar">
-      <h1>和英練習プレイヤー</h1>
+      <h1>和英練習プレイヤー 安定音声版</h1>
       <div class="top-actions">
         <button id="tabPractice" class="tab-btn active">練習</button>
         <button id="tabList" class="tab-btn">問題一覧</button>
@@ -69,12 +69,6 @@
             <button id="retryBtn">今の問題をやり直す</button>
           </div>
         </div>
-
-        <div class="card notes-card">
-          <div class="small-note">カウントダウン表示はありません。</div>
-          <div class="small-note">次へを押すと、その問題の最初から日本語再生で始まります。</div>
-          <div class="small-note">最後に到達した問題位置を記憶し、次回はそこから再開できます。</div>
-        </div>
       </section>
 
       <section id="screenList" class="screen">
@@ -101,7 +95,7 @@
             <label><span>考える時間（秒）</span><input id="thinkingSec" type="number" min="0" max="60" /></label>
             <label><span>発話時間（秒）</span><input id="speakingSec" type="number" min="0" max="60" /></label>
             <label><span>英語回数</span><input id="enRepeat" type="number" min="1" max="10" /></label>
-            <label><span>英語間隔（秒）</span><input id="enGapSec" type="number" min="0" max="10" step="0.5" /></label>
+            <label><span>英語間隔（秒）</span><input id="enGapSec" type="number" min="0.1" max="10" step="0.1" /></label>
             <label><span>次の問題まで（秒）</span><input id="nextDelaySec" type="number" min="0" max="30" step="0.5" /></label>
             <label><span>音声速度</span><input id="speechRate" type="number" min="0.5" max="1.5" step="0.1" /></label>
             <label><span>各問題の自動リピート回数</span><input id="perQuestionRepeat" type="number" min="1" max="20" /></label>
@@ -112,6 +106,8 @@
             <label><span>音声ファイル優先</span><input id="preferAudioFiles" type="checkbox" /></label>
             <label><span>音声がない時は読み上げを使う</span><input id="fallbackToSpeech" type="checkbox" /></label>
             <label><span>前回位置から再開</span><input id="resumeFromMemory" type="checkbox" /></label>
+            <label><span>音声ファイルがある時は読み上げ禁止</span><input id="strictAudioMode" type="checkbox" /></label>
+            <label><span>再生失敗時に再試行</span><input id="retryFailedAudio" type="checkbox" /></label>
           </div>
           <div class="row gap top-space">
             <button id="saveSettingsBtn" class="primary">設定を保存</button>
@@ -132,7 +128,6 @@
       </section>
     </main>
   </div>
-
   <script src="app.js"></script>
 </body>
 </html>

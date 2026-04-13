@@ -1,4 +1,4 @@
-const CACHE_NAME = 'waei-player-fresh-v1';
+const CACHE_NAME = 'waei-player-stable-audio-v1';
 const ASSETS = [
   './',
   './index.html',
@@ -17,16 +17,10 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(keys => Promise.all(
-      keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
-    ))
-  );
+  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))));
   self.clients.claim();
 });
 
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request).then(res => res || fetch(event.request))
-  );
+  event.respondWith(caches.match(event.request).then(res => res || fetch(event.request)));
 });
